@@ -135,6 +135,28 @@ class ManageChannel extends React.Component {
                         channelList: a, 
                         success: true
                     });
+                    let formData = new FormData();
+                    this.setState({ loading: true });
+                    axios.post("/admin/get-channel-list", formData, {
+                        headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'x-access-token': this.props.auth.user_token
+                        }
+                    })
+                    .then( (result) => {
+                        result = result.data;
+                        // console.log(result);
+                        if(!result.error) {
+                            this.setState({ loading: false, channelList: result.data });
+                        } else {
+                            this.setState({ loading: false, messages: ["Error with network, please reload"], error: true });
+                        }
+                    })
+                    .catch( (err) => console.log(err) )
+                    .finally( () => {
+                        if(this.mounted)
+                            this.setState({ loading: false });
+                    } )
                 } else {
                     this.setState({ loading: false, messages: ["Error updating the channel"], error: true });
                 }
