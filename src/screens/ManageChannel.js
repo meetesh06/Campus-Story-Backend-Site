@@ -234,6 +234,7 @@ class ManageChannel extends React.Component {
                             />
                             <p>{this.state.fileName}</p>
                             <input
+                                accept='image/*'
                                 hidden
                                 onChange={() => {
                                     let file = document.getElementById('upload').files[0];
