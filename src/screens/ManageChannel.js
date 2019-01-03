@@ -116,11 +116,11 @@ class ManageChannel extends React.Component {
                 result = result.data;
                 // console.log(result);
                 if(!result.error) {
-                    const a = [ ...this.state.channelList ];
-                    let index = a.findIndex(item => item._id === _id);
-                    a[index].name = name;
-                    a[index].description = description;
-                    a[index].creator_password = creatorPassword;
+                    // const a = [ ...this.state.channelList ];
+                    // let index = a.findIndex(item => item._id === _id);
+                    // a[index].name = name;
+                    // a[index].description = description;
+                    // a[index].creator_password = creatorPassword;
                     
                     // console.log(index, a);
                     
@@ -129,14 +129,11 @@ class ManageChannel extends React.Component {
                     // items[itemIndex]['creatorPassword'] = creatorPassword;
                     
                     this.setState({ 
-                        loading: false, 
                         messages: ["Channel " + this.state.name +" update success"], 
                         error: false,
-                        channelList: a, 
                         success: true
                     });
                     let formData = new FormData();
-                    this.setState({ loading: true });
                     axios.post("/admin/get-channel-list", formData, {
                         headers: {
                         'Content-Type': 'multipart/form-data',
