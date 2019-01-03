@@ -161,7 +161,7 @@ class HomeAdmin extends React.Component {
                     window.scrollTo(0, 0);
               } )
         } else {
-            this.setState({ messages, error })
+            this.setState({ messages, error, loading: false })
         }
     }
 

@@ -57,7 +57,7 @@ class ManageChannel extends React.Component {
         let error = false;
         let messages = [];
         let file = document.getElementById('upload').files[0];
-        
+        this.setState({ loading: true });
         if(this.state.name.length < 3) {
             error = true;
             messages.push("The channel name is less than 3 characters");
@@ -101,6 +101,7 @@ class ManageChannel extends React.Component {
             formData.append("name", name);
             formData.append("description", description);
             formData.append("creatorPassword", creatorPassword);
+            
             if(file !== undefined) {
                 formData.append("poster", file);
             }
@@ -145,7 +146,7 @@ class ManageChannel extends React.Component {
                     window.scrollTo(0, 0);
               } )
         } else {
-            this.setState({ messages, error })
+            this.setState({ messages, error, loading: false })
         }
     }
 
