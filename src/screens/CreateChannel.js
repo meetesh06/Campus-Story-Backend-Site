@@ -58,7 +58,7 @@ class HomeAdmin extends React.Component {
         let file = document.getElementById('upload').files[0];
         let creatorEmail = document.getElementById('creator-email');
         let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        this.setState({ loading: true });
+        this.setState({ loading: true, messages: [] });
         if(this.state.name.length < 3) {
             error = true;
             messages.push("The channel name is less than 3 characters");
@@ -143,15 +143,15 @@ class HomeAdmin extends React.Component {
                         success: true,
                         name: '',
                         description: '',
-                        privateChannel: '',
-                        officialChannel: '',
+                        privateChannel: false,
+                        officialChannel: false,
                         category: '',
                         creatorName: '',
                         creatorEmail: '',
                         creatorPassword: '',
                     });
                 } else {
-                    this.setState({ loading: false, messages: ["Error creating the channel"], error: true });
+                    this.setState({ loading: false, messages: [result.mssg], error: true });
                 }
               })
               .catch( (err) => console.log(err) )
@@ -228,7 +228,7 @@ class HomeAdmin extends React.Component {
                                 icon="upload"
                                 label={{
                                     basic: true,
-                                    content: 'Select a banner for the channel'
+                                    content: 'Select a banner for the channel(1000x750px)'
                                 }}
                                 labelPosition="right"
                             />

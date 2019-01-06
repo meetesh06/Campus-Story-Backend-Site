@@ -8,6 +8,7 @@ class ManageChannel extends React.Component {
         super(props);
         this.updateCurrent = this.updateCurrent.bind(this);
         this.submitForm = this.submitForm.bind(this);
+        this.updateList = this.updateList.bind(this);
     }
     state = {
         channelList: [],
@@ -23,12 +24,15 @@ class ManageChannel extends React.Component {
         this.setState({ 
             currentSelected: value, 
             name: value.name,
-            description: value.description,
-            creatorPassword: value.creator_password
+            description: value.description
         })
     }
 
     componentDidMount() {
+        this.updateList();
+    }
+
+    updateList = () => {
         let formData = new FormData();
         this.setState({ loading: true });
         axios.post("/admin/get-channel-list", formData, {
@@ -76,19 +80,6 @@ class ManageChannel extends React.Component {
             error = true;
             messages.push("The channel description is more than 140 characters");
         }
-
-        if(this.state.creatorPassword.length < 3) {
-            error = true;
-            messages.push("The creator password is less than 3 characters");
-        }
-        
-        if(this.state.creatorPassword.length > 140) {
-            error = true;
-            messages.push("The creator password is more than 140 characters");
-        }
-        
-        
-        
         
         if(error === false) {
             const formData = new FormData();
@@ -144,6 +135,7 @@ class ManageChannel extends React.Component {
                         result = result.data;
                         // console.log(result);
                         if(!result.error) {
+                            this.updateList();
                             this.setState({ loading: false, channelList: result.data });
                         } else {
                             this.setState({ loading: false, messages: ["Error with network, please reload"], error: true });
@@ -219,7 +211,8 @@ class ManageChannel extends React.Component {
                         </Message>
                     }
                     {/* <Image style={{ display: 'block', margin: 'auto', width: 50 }} src={"https://mycampusdock.com/" + this.state.currentSelected.media} size='small' /> */}
-                    <Image style={{ display: 'block', margin: 'auto', width: '100%', maxHeight: 250, objectFit: 'contain' }} src={"https://mycampusdock.com/" + (this.state.currentSelected.media && this.state.currentSelected.media[0])} size='big' />
+                    <Image style={{ borderRadius: 15, display: 'block', margin: 'auto', width: 333, maxHeight: 250, objectFit: 'contain' }} src={"https://mycampusdock.com/" + (this.state.currentSelected.media && this.state.currentSelected.media[0])} size='big' />
+                    <br></br>
                     <Form>
                         <Form.Group widths='equal'>
                             <Form.Input value={this.state.name} onChange={ (event, value) => this.setState({ name: value.value }) } fluid label='Channel Name' placeholder='Channel Name' />
