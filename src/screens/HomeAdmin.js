@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import RequireAuth from '../components/require_auth';
 import CreateChannel from './CreateChannel';
 import ManageChannel from './ManageChannel';
+import SetTrending from './SetTrending';
 
 class HomeAdmin extends Component {
   state = { visible: false }
@@ -56,6 +57,10 @@ class HomeAdmin extends Component {
               <Icon name='edit outline' />
               Manage Channels
             </Menu.Item>
+            <Menu.Item as='b' onClick={() => history.push('/admin/set-trending')} >
+              <Icon name='bell' />
+              Set Trending
+            </Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher dimmed={visible}>
@@ -63,6 +68,7 @@ class HomeAdmin extends Component {
                 <Switch>
                     <Route exact path="/admin/create-channel" component={RequireAuth(CreateChannel)} />
                     <Route exact path="/admin/manage-channel" component={RequireAuth(ManageChannel)} />
+                    <Route exact path="/admin/set-trending" component={RequireAuth(SetTrending)} />
                 </Switch>
             </Segment>
           </Sidebar.Pusher>

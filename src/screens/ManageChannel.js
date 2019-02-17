@@ -67,18 +67,18 @@ class ManageChannel extends React.Component {
             messages.push("The channel name is less than 3 characters");
         }
         
-        if(this.state.name.length > 140) {
+        if(this.state.name.length > 2000) {
             error = true;
-            messages.push("The channel name is more than 140 characters");
+            messages.push("The channel name is more than 2000 characters");
         }
         
         if(this.state.description.length < 10) {
             error = true;
             messages.push("The channel description is less than 10 characters");
         }
-        if(this.state.description.length > 140) {
+        if(this.state.description.length > 2000) {
             error = true;
-            messages.push("The channel description is more than 140 characters");
+            messages.push("The channel description is more than 2000 characters");
         }
         
         if(error === false) {
