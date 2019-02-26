@@ -209,7 +209,14 @@ class HomeAdmin extends React.Component {
                         <Form.TextArea value={this.state.description} onChange={ (event, value) => this.setState({ description: value.value }) } label='Description' placeholder='What will this channel be about...' />
                         <Form.Checkbox label='Make this channel private?' checked={this.state.privateChannel} onChange={ (event, data) => this.setState({ privateChannel: !this.state.privateChannel }) }/>
                         <Form.Checkbox label='Official Channel?' checked={this.state.officialChannel} onChange={ (event, data) => this.setState({ officialChannel: !this.state.officialChannel }) }/>
-                        <Form.Dropdown value={this.state.category} onChange={(event, value) => this.setState({ category: value.value }) } label='Category' options={this.state.categories} placeholder='Select a category'/>
+                        {/* <Dropdown
+                            placeholder='State'
+                            search
+                            selection
+                            onChange={(val, val1) => this.setState({ selected: val1.value })}
+                            options={stateOptions}
+                        /> */}
+                        <Form.Dropdown search value={this.state.category} onChange={(event, value) => this.setState({ category: value.value }) } label='Category' options={this.state.categories} placeholder='Select a category'/>
                         <Form.Group widths='equal'>
                             <Form.Input value={this.state.creatorName} onChange={ (event, value) => this.setState({ creatorName: value.value }) } fluid label='Creator Name' placeholder='Creator Name' />
                         </Form.Group>
