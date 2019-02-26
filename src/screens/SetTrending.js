@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Grid, List, Segment, Form, Message, Label, Button, Image } from 'semantic-ui-react'
+import {  Grid, List, Segment, Form, Message, Label, Image } from 'semantic-ui-react'
 import axios from 'axios';
 import { connect } from 'react-redux';
 
@@ -93,7 +93,6 @@ class SetTrending extends React.Component {
     }
 
     submitForm = () => {
-        let messages = [];
         this.setState({ loading: true });
         if(this.state.currentSelected._id === undefined) return;
         const formData = new FormData();

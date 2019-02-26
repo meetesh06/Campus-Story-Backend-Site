@@ -13,6 +13,11 @@ const Loading = () => <ContentLoader>
   <rect x="0" y="25" width="300" height="300" />
 </ContentLoader>;
 
+const LandingLoader = Loadable({
+  loader: () => import('../screens/Landing'),
+  loading: Loading,
+});
+
 const LoginLoader = Loadable({
   loader: () => import('../screens/Login'),
   loading: Loading,
@@ -32,7 +37,8 @@ const Routes = () => {
       {/* <Route path="/cdc" component={RequireAuth(CDC)} /> */}
       <Route path="/admin" component={RequireAuth(HomeAdminLoader)} />
       <Route exact path="/home" component={RequireAuth(HomeLoader)} />
-      <Route exact path="/" component={LoginLoader} />
+      <Route exact path="/login" component={LoginLoader} />
+      <Route exact path="/" component={LandingLoader} />
       <Route path="*" component={RequireAuth(notFound)} />
     </Switch>
   );

@@ -6,6 +6,7 @@ import RequireAuth from '../components/require_auth';
 import CreateChannel from './CreateChannel';
 import ManageChannel from './ManageChannel';
 import SetTrending from './SetTrending';
+import EmailActions from './EmailActions';
 
 class HomeAdmin extends Component {
   state = { visible: false }
@@ -61,6 +62,10 @@ class HomeAdmin extends Component {
               <Icon name='bell' />
               Set Trending
             </Menu.Item>
+            <Menu.Item as='b' onClick={() => history.push('/admin/email-actions')} >
+              <Icon name='mail' />
+              Email Actions
+            </Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher dimmed={visible}>
@@ -69,6 +74,7 @@ class HomeAdmin extends Component {
                     <Route exact path="/admin/create-channel" component={RequireAuth(CreateChannel)} />
                     <Route exact path="/admin/manage-channel" component={RequireAuth(ManageChannel)} />
                     <Route exact path="/admin/set-trending" component={RequireAuth(SetTrending)} />
+                    <Route exact path="/admin/email-actions" component={RequireAuth(EmailActions)} />
                 </Switch>
             </Segment>
           </Sidebar.Pusher>
