@@ -211,7 +211,7 @@ class ManageChannel extends React.Component {
                         </Message>
                     }
                     {/* <Image style={{ display: 'block', margin: 'auto', width: 50 }} src={"https://mycampusdock.com/" + this.state.currentSelected.media} size='small' /> */}
-                    <Image style={{ borderRadius: 15, display: 'block', margin: 'auto', width: 333, maxHeight: 250, objectFit: 'contain' }} src={"https://mycampusdock.com/" + (this.state.currentSelected.media && this.state.currentSelected.media[0])} size='big' />
+                    <Image style={{ borderRadius: 15, display: 'block', margin: 'auto', width: 333, maxHeight: 250, objectFit: 'contain' }} src={"https://mycampusdock.chat/" + (this.state.currentSelected.media && this.state.currentSelected.media[0])} size='big' />
                     <br></br>
                     <Form>
                         <Form.Group widths='equal'>
