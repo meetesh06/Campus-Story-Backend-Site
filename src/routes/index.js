@@ -18,6 +18,16 @@ const LandingLoader = Loadable({
   loading: Loading,
 });
 
+const PrivacyPolicyLoader = Loadable({
+  loader: () => import('../screens/Privacy'),
+  loading: Loading,
+});
+
+const TermsLoader = Loadable({
+  loader: () => import('../screens/Terms'),
+  loading: Loading,
+});
+
 const LoginLoader = Loadable({
   loader: () => import('../screens/Login'),
   loading: Loading,
@@ -33,11 +43,14 @@ const HomeAdminLoader = Loadable({
 
 const Routes = () => {
   return (
-    <Switch>
+    <Switch >
       {/* <Route path="/cdc" component={RequireAuth(CDC)} /> */}
       <Route path="/admin" component={RequireAuth(HomeAdminLoader)} />
       <Route exact path="/home" component={RequireAuth(HomeLoader)} />
       <Route exact path="/login" component={LoginLoader} />
+      <Route exact path="/" component={LandingLoader} />
+      <Route exact path="/privacy-policy" component={PrivacyPolicyLoader} />
+      <Route exact path="/terms" component={TermsLoader} />
       <Route exact path="/" component={LandingLoader} />
       <Route path="*" component={RequireAuth(notFound)} />
     </Switch>
